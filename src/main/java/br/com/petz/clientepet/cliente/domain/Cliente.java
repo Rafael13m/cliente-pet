@@ -2,17 +2,33 @@ package br.com.petz.clientepet.cliente.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-//@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+@Entity
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
+
+	private UUID idCliente;
 	
 	private Cliente() {
 		super();
@@ -24,7 +40,6 @@ public class Cliente {
 	private String email;
 	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotNull String celular,
 			String telefone, Sexo sexo, @NotNull LocalDate dataNascimento, @CPF String cpf, Boolean aceitaTermos) {
-		super();
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
 		this.celular = celular;
@@ -34,7 +49,6 @@ public class Cliente {
 		this.cpf = cpf;
 		this.aceitaTermos = aceitaTermos;
 		this.dataHoraDoCadastro = LocalDateTime.now();
-		//this.dataHoraDoCadastro = LocalDateTime.now();
 		
 	}
 	@NotNull
