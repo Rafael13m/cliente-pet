@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Builder;
 import lombok.Value;
 
 @Value
+@Builder
 public class ClienteResponse {
 
 	private UUID idCliente;
