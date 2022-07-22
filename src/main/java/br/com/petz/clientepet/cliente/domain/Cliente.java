@@ -27,14 +27,25 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
-
 	private UUID idCliente;
-
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
 	@Email
 	private String email;
+	
+	@NotNull
+	private String celular;
+	private String telefone;
+	private Sexo sexo;
+	@NotNull
+	private LocalDate dataNascimento;
+	@CPF
+	private String cpf;
+	private Boolean aceitaTermos;
+
+	private LocalDateTime dataHoraDoCadastro;
+	private LocalDateTime dataHoraDaUltimaAlteracao;
 
 	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotNull String celular,
 			String telefone, Sexo sexo, @NotNull LocalDate dataNascimento, @CPF String cpf, Boolean aceitaTermos) {
@@ -49,19 +60,5 @@ public class Cliente {
 		this.dataHoraDoCadastro = LocalDateTime.now();
 
 	}
-
-	@NotNull
-	private String celular;
-	private String telefone;
-	private Sexo sexo;
-	@NotNull
-	private LocalDate dataNascimento;
-	@CPF
-	private String cpf;
-
-	private Boolean aceitaTermos;
-
-	private LocalDateTime dataHoraDoCadastro;
-	private LocalDateTime dataHoraDaUltimaAlteracao;
-
+	
 }
