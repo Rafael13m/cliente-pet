@@ -1,5 +1,6 @@
 package br.com.petz.clientepet.cliente.application.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
@@ -22,7 +23,9 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[inicia] ClienteAp´licationService - criaCliente");
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[Finaliza] ClienteAp´licationService - criaCliente");
-		return null;
+		return ClienteResponse.builder().
+				idCliente(cliente.getIdCliente()).
+				build();
 	}
 
 }
