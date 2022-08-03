@@ -1,7 +1,6 @@
 package br.com.petz.clientepet.cliente.application.api;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
